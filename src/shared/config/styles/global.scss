@@ -1,0 +1,51 @@
+:root {
+  --default-bg-color: #EEF2F8;
+  --white-bg-color: #FFFFFF;
+  --default-border: 1px solid #D8E1EF;
+  --default-border-radius: 12px;
+  --disabled-button: #ccc;
+  --light-bg-color: #FFEFF5;
+  --light-gray-bg-color: #CCC;
+
+  // * Router
+  --router-width: 100vw;
+  --router-height: 100vh;
+  --height-with-navbar: 80vh;
+
+  // * Fonts
+  --font-size-xxl: 28px;
+  --font-size-xl: 24px;
+  --font-size-l: 20px;
+  --font-size-lm: 16px;
+  --font-size-m: 14px;
+  --font-size-s: 12px;
+
+  --font-weight-thin: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+
+  --white-font-color: #FFFFFF;
+  --black-font-color: #272727;
+  --light-gray-font-color: #ccc;
+
+  --second-font-color: #F91F71;
+
+  // * Margin
+  --medium-space: 8px;
+  --large-space: 12px;
+  --header-space: 20px;
+  --header-space-xl: 28px;
+
+  // * Gap
+  --gap-l: 24px;
+  --gap-m: 16px;
+  --gap-ml: 12px;
+  --gap-ms: 8px;
+  --gap-s: 4px;
+
+  // * Form
+  --form-padding: 20px;
+
+  // * Input
+  --input-default-padding: 0 12px 0 12px;
+}
