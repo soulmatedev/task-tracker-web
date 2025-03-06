@@ -1,0 +1,10 @@
+.router {
+  > * {
+    width: var(--router-width);
+    height: var(--router-height);
+  }
+
+  &.authorization {
+    height: calc(var(--height-with-navbar) - var(--navbar-height));
+  }
+}

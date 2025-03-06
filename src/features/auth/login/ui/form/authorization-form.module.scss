@@ -1,0 +1,33 @@
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background-color: #FFFFFF;
+  padding: var(--form-padding);
+  border-radius: var(--default-border-radius);
+  margin: 10px 0 10px 0;
+}
+
+.question {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-regular);
+  color: var(--light-gray-font-color);
+  cursor: pointer;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.label {
+  font-size: var(--font-size-lm);
+  margin-bottom: var(--medium-space);
+  color: var(--light-gray-font-color);
+}
+
+.header {
+  font-size: var(--font-size-xl);
+}

@@ -1,0 +1,15 @@
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: var(--question-form-gap);
+  background-color: var(--block-bg-color);
+  padding: var(--form-padding);
+  border-radius: var(--default-border-radius);
+  margin: var(--question-form-margin);
+}
+
+.label {
+  font-size: var(--font-size-m);
+  margin-bottom: var(--medium-space);
+  color: var(--light-gray-font-color);
+}

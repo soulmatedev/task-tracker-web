@@ -1,0 +1,20 @@
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background-color: #FFFFFF;
+  padding: var(--form-padding);
+  border-radius: var(--default-border-radius);
+  margin: 10px 0 10px 0;
+}
+
+
+.label {
+  font-size: var(--font-size-lm);
+  margin-bottom: var(--medium-space);
+  color: var(--light-gray-font-color);
+}
+
+.header {
+  font-size: var(--font-size-xl);
+}

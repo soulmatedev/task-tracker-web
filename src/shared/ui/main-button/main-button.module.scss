@@ -1,0 +1,25 @@
+.main_button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: var(--font-weight-thin);
+
+  cursor: pointer;
+
+  font-size: var(--font-size-m);
+  background-color: var(--main-button-bg-color);
+  color: var(--white-font-color);
+  border-radius: 8px;
+  padding: 10px 15px 10px 15px;
+
+  &:hover {
+    background-color: var(--main-button-bg-color-hovered);
+  }
+}
+
+.disabled {
+  background-color: #eeeeee;
+  cursor: not-allowed;
+
+  pointer-events: none;
+}

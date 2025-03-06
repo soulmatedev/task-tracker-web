@@ -1,0 +1,36 @@
+import { createApi } from '@reduxjs/toolkit/query/react';
+import {
+	URI_SIGN_IN, URI_SIGN_UP,
+} from './consts';
+import {
+	ISignInRequest, ISignInResponse, ISignUpRequest,
+} from './types';
+import { baseQuery } from '../../../../shared/api/api';
+
+export const authAPI = createApi({
+	reducerPath: 'authAPI',
+	baseQuery,
+	refetchOnReconnect: true,
+	endpoints: builder => ({
+		signIn: builder.mutation<ISignInResponse, ISignInRequest>({
+			query: (data) => ({
+				url: URI_SIGN_IN,
+				method: 'POST',
+				body: { ...data },
+			}),
+		}),
+		signUp: builder.mutation<void, ISignUpRequest>({
+			query: (data) => ({
+				url: URI_SIGN_UP,
+				method: 'POST',
+				body: { ...data },
+			}),
+		}),
+		getCurrentUser: builder.query<{ role: string }, void>({
+			query: () => ({
+				url: '/api/user',
+				method: 'GET',
+			}),
+		}),
+	}),
+});
