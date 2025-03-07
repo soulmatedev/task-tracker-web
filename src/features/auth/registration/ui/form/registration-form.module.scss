@@ -5,9 +5,28 @@
   background-color: #FFFFFF;
   padding: var(--form-padding);
   border-radius: var(--default-border-radius);
-  margin: 10px 0 10px 0;
+  border: 1px solid var(--content-primary-frame);
 }
 
+.sign_in_button {
+  display: grid;
+  justify-content: start;
+  border-bottom: 0.5px var(--text-secondary) solid;
+  color: var(--text-secondary);
+  font-size: 14px;
+  padding-bottom: 1px;
+  width: 100%;
+
+  span {
+    cursor: pointer;
+  }
+}
+
+.sign_in_wrapper {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
 
 .label {
   font-size: var(--font-size-lm);
@@ -16,5 +35,7 @@
 }
 
 .header {
+  display: flex;
+  justify-content: center;
   font-size: var(--font-size-xl);
 }

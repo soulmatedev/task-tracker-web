@@ -12,11 +12,10 @@ export const AuthorizationPasswordInput = (props: AuthorizationPasswordInputProp
 
 	return (
 		<div className={css.password}>
-			<p className={css.label}>Пароль</p>
 			<Input
 				placeholder="Введите пароль"
 				width={349}
-				height={40}
+				height={60}
 				type={InputTypes.PASSWORD}
 				value={value}
 				onChange={(e) => onChange(e.target.value)}

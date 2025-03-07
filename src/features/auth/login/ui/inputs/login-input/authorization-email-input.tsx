@@ -12,11 +12,10 @@ export const AuthorizationEmailInput = (props: AuthorizationEmailInputProps) => 
 
 	return (
 		<div className={css.email}>
-			<p className={css.label}>Почта</p>
 			<Input
 				placeholder="Введите почту"
 				width={349}
-				height={40}
+				height={60}
 				value={value}
 				type={InputTypes.TEXT}
 				onChange={(e) => onChange(e.target.value)}

@@ -5,7 +5,7 @@
   background-color: #FFFFFF;
   padding: var(--form-padding);
   border-radius: var(--default-border-radius);
-  margin: 10px 0 10px 0;
+  border: 1px solid var(--content-primary-frame);
 }
 
 .question {
@@ -29,5 +29,8 @@
 }
 
 .header {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
   font-size: var(--font-size-xl);
 }

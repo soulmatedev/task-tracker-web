@@ -12,11 +12,10 @@ export const RegistrationLoginInput = (props: RegistrationLoginInputProps) => {
 
 	return (
 		<div className={css.login}>
-			<p className={css.label}>Логин</p>
 			<Input
 				placeholder="Введите логин"
 				width={349}
-				height={40}
+				height={60}
 				value={value}
 				type={InputTypes.TEXT}
 				onChange={(e) => onChange(e.target.value)}

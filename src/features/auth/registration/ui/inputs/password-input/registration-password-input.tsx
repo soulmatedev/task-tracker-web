@@ -12,11 +12,10 @@ export const RegistrationPasswordInput = (props: RegistrationPasswordInputProps)
 
 	return (
 		<div className={css.password}>
-			<p className={css.label}>Пароль</p>
 			<Input
 				placeholder="Введите пароль"
 				width={349}
-				height={40}
+				height={60}
 				value={value}
 				type={InputTypes.PASSWORD}
 				onChange={(e) => onChange(e.target.value)}

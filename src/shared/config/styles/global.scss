@@ -1,5 +1,5 @@
 :root {
-  --default-bg-color: #f5f5f5;
+  --default-bg-color: #FFFFFF;
   --white-bg-color: #FFFFFF;
   --default-border: 1px solid #D8E1EF;
   --default-border-radius: 12px;
@@ -15,6 +15,11 @@
   // Buttons
   --main-button-bg-color: #1F5AF3;
   --main-button-bg-color-hovered: #1B51DA;
+
+  --text-primary: #282828;
+  --text-primary-light: #3d3d3d;
+  --text-secondary: #757575;
+  --text-content: #575757;
 
   // * Fonts
   --font-size-xxl: 28px;
@@ -48,8 +53,12 @@
   --gap-s: 4px;
 
   // * Form
-  --form-padding: 20px;
+  --form-padding: 48px;
 
   // * Input
-  --input-default-padding: 0 12px 0 12px;
+  --input-default-padding: 0 20px 0 20px;
+
+  --content-primary-frame: #DEDEDE;
+  --content-primary-frame-hover: #8da9ff;
+  --content-primary-frame-selected: #2C67FF;
 }
