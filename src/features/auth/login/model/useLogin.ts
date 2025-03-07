@@ -40,13 +40,14 @@ export const useLogin = () => {
 		try {
 			const res = await signIn(authorizationData)
 				.unwrap();
-
+			console.log('id:', res.id, 'access_token:', res.access_token);
 			// eslint-disable-next-line camelcase,@typescript-eslint/naming-convention
-			const { access_token } = res;
+			const { id, access_token } = res;
 			// eslint-disable-next-line camelcase
 			if (access_token) {
 				localStorage.setItem('token', access_token);
-				navigate('/test-list');
+				// eslint-disable-next-line camelcase
+				navigate(`/projects-list/${id}`);
 				toast.success('Авторизация прошла успешно');
 				dispatch(authActions.clearData());
 			} else {

@@ -3,6 +3,7 @@ import { Route, Routes, useLocation } from 'react-router-dom';
 import styles from './Router.module.scss';
 import { AuthorizationPage } from '../../pages/auth/login';
 import { RegistrationPage } from '../../pages/auth/registration';
+import { ProjectsListPage } from '../../pages/projects-list';
 
 const Router = () => {
 	const location = useLocation();
@@ -14,6 +15,7 @@ const Router = () => {
 			<Routes>
 				<Route path="/" element={<AuthorizationPage />} />
 				<Route path="/registration" element={<RegistrationPage />} />
+				<Route path="/projects-list/:id" element={<ProjectsListPage />} />
 			</Routes>
 		</div>
 	);

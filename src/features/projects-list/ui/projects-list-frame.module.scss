@@ -1,0 +1,13 @@
+.wrapper {
+
+  .header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: var(--header-space-xl);
+  }
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 400;
+}

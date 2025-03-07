@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  border: 1px solid var(--content-primary-frame);
+  border-radius: 10px;
+}
+
+.photo {
+  flex: 8;
+}
+
+.name {
+  flex: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid var(--content-primary-frame);
+}

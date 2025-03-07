@@ -5,6 +5,7 @@ export interface ISignInRequest {
 }
 
 export interface ISignInResponse {
+	id: number;
 	access_token: string;
 	refresh_token: string;
 }
