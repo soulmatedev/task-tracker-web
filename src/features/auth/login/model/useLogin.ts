@@ -1,7 +1,7 @@
-import { toast } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { FetchBaseQueryError } from '@reduxjs/toolkit/query';
+import { toast } from 'react-toastify';
 import { selectEmail, selectPassword } from '../../../../entities/user/auth/model/authSelectors';
 import { authAPI } from '../../../../entities/user/auth/api/api';
 import { ISignInRequest } from '../../../../entities/user/auth/api/types';
@@ -40,7 +40,6 @@ export const useLogin = () => {
 		try {
 			const res = await signIn(authorizationData)
 				.unwrap();
-			console.log('id:', res.id, 'access_token:', res.access_token);
 			// eslint-disable-next-line camelcase,@typescript-eslint/naming-convention
 			const { id, access_token } = res;
 			// eslint-disable-next-line camelcase

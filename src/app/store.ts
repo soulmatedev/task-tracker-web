@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { reducers } from './reducers';
 import { authAPI } from '../entities/user/auth/api/api';
+import { projectAPI } from '../entities/project/api/api';
 
 const setupStore = () => configureStore({
 	reducer: reducers,
@@ -8,6 +9,7 @@ const setupStore = () => configureStore({
 		serializableCheck: false,
 	}).concat(
 		authAPI.middleware,
+		projectAPI.middleware,
 	),
 });
 

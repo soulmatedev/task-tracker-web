@@ -6,15 +6,15 @@
   font-weight: var(--font-weight-thin);
   font-size: var(--font-size-m);
   background-color: var(--white-font-color);
-  border-radius: var(--main-button-border-radius);
-  padding: var(--main-button-padding);
-  border: var(--default-border);
+  border-radius: 0.6rem;
+  padding: var(--textarea-default-padding);
+  border: 1px solid var(--content-primary-frame);
   outline: none;
   overflow: hidden;
 
   resize: none;
 
   &::placeholder {
-    color: #a0abbe;
+    color: var(--content-primary-frame);
   }
 }
