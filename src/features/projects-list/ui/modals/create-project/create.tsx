@@ -6,6 +6,7 @@ import { ProjectNameInput } from './ui/project-name-input';
 import { useProject } from '../../../../../entities/project/model/useProject';
 import { ProjectDescriptionTextarea } from './ui/project-description-textarea';
 import { CreateProjectButton } from './ui/create-project-button';
+import { UsersList } from './ui/users-list';
 
 export const CreateProjectModal = () => {
 	const dispatch = useAppDispatch();
@@ -13,10 +14,8 @@ export const CreateProjectModal = () => {
 	const {
 		name,
 		description,
-		assignedAccounts,
 		updateName,
 		updateDescription,
-		updateAssignedAccounts,
 		onCreateProject,
 	} = useProject();
 
@@ -47,8 +46,10 @@ export const CreateProjectModal = () => {
 				<ProjectDescriptionTextarea value={description} onChange={updateDescription} />
 				<CreateProjectButton onCreateProject={handleCreateProject} />
 			</div>
-			<div>
-				Сотрудники
+			<div className={css.accounts}>
+				<p>Пользователи</p>
+				<p className={css.subtitle}>Выберите для назначения</p>
+				<UsersList />
 			</div>
 		</Modal>
 	);

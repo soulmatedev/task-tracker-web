@@ -1,12 +1,13 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { baseQuery } from '../../../shared/api/api';
 import { URI_CREATE_PROJECT, URI_PROJECT } from './consts';
-import { ICreateProjectRequest, IUpdateProjectRequest } from './types';
+import { ICreateProjectRequest, IProject, IUpdateProjectRequest } from './types';
 
 export const projectAPI = createApi({
 	reducerPath: 'projectAPI',
 	baseQuery,
 	refetchOnReconnect: true,
+	tagTypes: ['project'],
 	endpoints: builder => ({
 		create: builder.mutation<void, ICreateProjectRequest>({
 			query: (data) => ({
@@ -27,6 +28,13 @@ export const projectAPI = createApi({
 				url: `${URI_PROJECT}/${id}`,
 				method: 'DELETE',
 			}),
+		}),
+		getProjectsByAccountId: builder.query<IProject[], number>({
+			query: (accountId) => ({
+				url: `${URI_PROJECT}/${accountId}`,
+				method: 'GET',
+			}),
+			providesTags: ['project'],
 		}),
 	}),
 });

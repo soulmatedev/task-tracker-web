@@ -25,6 +25,7 @@ export const useProject = () => {
 		try {
 			const response = await create(projectData).unwrap();
 			dispatch(projectActions.clearData());
+			dispatch(projectAPI.util?.invalidateTags(['project']));
 			toast.success('Проект создан успешно');
 			return response;
 		} catch (error) {
