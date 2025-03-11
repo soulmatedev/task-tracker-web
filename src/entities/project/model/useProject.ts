@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import { toast } from 'react-toastify';
 import { useAppDispatch } from '../../../shared/libs/utils/redux';
 import { projectActions } from './projectSlice';
-import { ICreateProjectRequest } from '../api/types';
+import { IAssignedAccount, ICreateProjectRequest } from '../api/types';
 import { selectAssignedAccounts, selectDescription, selectName } from './projectSelectors';
 import { projectAPI } from '../api/api';
 
@@ -41,7 +41,7 @@ export const useProject = () => {
 		dispatch(projectActions.setDescription(description));
 	};
 
-	const updateAssignedAccounts = (assignedAccounts: number[]) => {
+	const updateAssignedAccounts = (assignedAccounts: IAssignedAccount[]) => {
 		dispatch(projectActions.setAssignedAccounts(assignedAccounts));
 	};
 

@@ -1,34 +1,46 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { IAssignedAccount, IProject } from '../api/types';
 
 interface IProjectState {
 	name: string,
 	description: string,
-	assigned_accounts: number[],
+	assignedAccounts: IAssignedAccount[],
 	modals: {
 		isCreateProjectModalActive: boolean,
-		isUpdateProjectModalActive: boolean,
+		isEditProjectModalActive: boolean,
 		isDeleteProjectModalActive: boolean,
+		isSidebarActive: boolean;
 	}
+	selectedProject: IProject | null,
+	deletingProjectId: number | null,
 }
 
 const initialState: IProjectState = {
 	name: '',
 	description: '',
-	assigned_accounts: [],
+	assignedAccounts: [],
 	modals: {
 		isCreateProjectModalActive: false,
-		isUpdateProjectModalActive: false,
+		isEditProjectModalActive: false,
 		isDeleteProjectModalActive: false,
+		isSidebarActive: false,
 	},
+	selectedProject: null,
+	deletingProjectId: null,
 };
 
 export const projectSlice = createSlice({
 	name: 'project',
 	initialState,
 	selectors: {
+		getSelectedProject: (state) => state.selectedProject,
+		getDeletingProjectId: (state) => state.deletingProjectId,
+
 		getIsCreateProjectModalActive: (state) => state.modals.isCreateProjectModalActive || false,
-		getIsUpdateProjectModalActive: (state) => state.modals.isUpdateProjectModalActive || false,
+		getIsUpdateProjectModalActive: (state) => state.modals.isEditProjectModalActive || false,
 		getIsDeleteProjectModalActive: (state) => state.modals.isDeleteProjectModalActive || false,
+
+		getIsSidebarActive: (state) => state.modals.isSidebarActive,
 	},
 	reducers: {
 		setName(state, action: PayloadAction<string>) {
@@ -37,22 +49,33 @@ export const projectSlice = createSlice({
 		setDescription(state, action: PayloadAction<string>) {
 			state.description = action.payload;
 		},
-		setAssignedAccounts(state, action: PayloadAction<number[]>) {
-			state.assigned_accounts = action.payload;
+		setAssignedAccounts(state, action: PayloadAction<IAssignedAccount[]>) {
+			state.assignedAccounts = action.payload;
 		},
 		clearData(state) {
 			state.name = '';
 			state.description = '';
 		},
 
+		setSelectedProject(state, action: PayloadAction<IProject | null>) {
+			state.selectedProject = action.payload;
+		},
+		setDeletingProjectId: (state, action: PayloadAction<number | null>) => {
+			state.deletingProjectId = action.payload;
+		},
+
 		setIsCreateProjectModalActive: (state, action: PayloadAction<boolean>) => {
 			state.modals.isCreateProjectModalActive = action.payload;
 		},
-		setIsUpdateProjectModalActive: (state, action: PayloadAction<boolean>) => {
-			state.modals.isUpdateProjectModalActive = action.payload;
+		setIsEditProjectModalActive: (state, action: PayloadAction<boolean>) => {
+			state.modals.isEditProjectModalActive = action.payload;
 		},
 		setIsDeleteProjectModalActive: (state, action: PayloadAction<boolean>) => {
 			state.modals.isDeleteProjectModalActive = action.payload;
+		},
+
+		setIsSidebarActive: (state, action: PayloadAction<boolean>) => {
+			state.modals.isSidebarActive = action.payload;
 		},
 	},
 });

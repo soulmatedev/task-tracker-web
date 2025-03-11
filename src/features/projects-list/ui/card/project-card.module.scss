@@ -4,6 +4,11 @@
   cursor: pointer;
   border: 1px solid var(--content-primary-frame);
   border-radius: 10px;
+  transition: border 0.3s ease;
+}
+
+.wrapper.selected {
+  border: 1px solid var(--content-primary-frame-selected);
 }
 
 .photo {

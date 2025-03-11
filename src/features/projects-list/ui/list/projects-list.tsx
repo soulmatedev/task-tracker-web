@@ -1,23 +1,67 @@
 import { useParams } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 import css from './projects-list.module.scss';
-import { ProjectCard } from '../card';
 import { projectAPI } from '../../../../entities/project/api/api';
+import { IProject } from '../../../../entities/project/api/types';
+import { projectActions } from '../../../../entities/project/model/projectSlice';
+import { useAppDispatch } from '../../../../shared/libs/utils/redux';
+import { ProjectInfoSidebar } from '../sidebar';
+import { RootState } from '../../../../app/reducers';
+import { ProjectCard } from '../card';
 
-export const ProjectsList = () => {
-	const { id } = useParams<{ id: string }>();
-	const { data: projects } = projectAPI.useGetProjectsByAccountIdQuery(Number(id), { skip: !id });
+interface ProjectsListProps {
+	accountId: string,
+}
+
+export const ProjectsList = (props: ProjectsListProps) => {
+	const { accountId } = props;
+	const dispatch = useAppDispatch();
+	const selectedProject = useSelector((state: RootState) => state.project.selectedProject);
+	const isSidebarActive = useSelector((state: RootState) => state.project.modals.isSidebarActive);
+	const { data: projects } = projectAPI.useGetProjectsByAccountIdQuery(Number(accountId), { skip: !accountId });
+
+	const onProjectClick = (project: IProject) => {
+		if (selectedProject?.id === project.id) {
+			return;
+		}
+		dispatch(projectActions.setSelectedProject(project));
+
+		if (!isSidebarActive) {
+			dispatch(projectActions.setIsSidebarActive(true));
+		}
+	};
+
+	const closeSidebar = () => {
+		dispatch(projectActions.setIsSidebarActive(false));
+		dispatch(projectActions.setSelectedProject(null));
+	};
 
 	return (
 		<div className={css.wrapper}>
 			{projects && projects?.length > 0 ? (
 				<>
 					{projects.map((project) => (
-						<ProjectCard key={project.id} name={project.name} />
+						<ProjectCard
+							key={project.id}
+							name={project.name}
+							onClick={() => onProjectClick(project)}
+							isSelected={selectedProject?.id === project.id}
+						/>
 					))}
 				</>
 			) : (
 				<p>Проекты не найдены</p>
 			)}
+
+			{
+				isSidebarActive && selectedProject
+					&& (
+						<ProjectInfoSidebar
+							project={selectedProject}
+							onClose={closeSidebar}
+						/>
+					)
+			}
 		</div>
 	);
 };

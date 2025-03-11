@@ -8,7 +8,12 @@ import { ProjectDescriptionTextarea } from './ui/project-description-textarea';
 import { CreateProjectButton } from './ui/create-project-button';
 import { UsersList } from './ui/users-list';
 
-export const CreateProjectModal = () => {
+interface CreateProjectModalProps {
+	accountId: string,
+}
+
+export const CreateProjectModal = (props: CreateProjectModalProps) => {
+	const { accountId } = props;
 	const dispatch = useAppDispatch();
 
 	const {
@@ -47,9 +52,9 @@ export const CreateProjectModal = () => {
 				<CreateProjectButton onCreateProject={handleCreateProject} />
 			</div>
 			<div className={css.accounts}>
-				<p>Пользователи</p>
-				<p className={css.subtitle}>Выберите для назначения</p>
-				<UsersList />
+				<p>Исполнители</p>
+				<p className={css.subtitle}>Выберите для назначения на проект</p>
+				<UsersList accountId={accountId} />
 			</div>
 		</Modal>
 	);

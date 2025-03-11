@@ -1,10 +1,16 @@
+import { useParams } from 'react-router-dom';
 import css from './projects-list-frame.module.scss';
 import { CreateProjectButton } from './button/create-project-button';
-import { ProjectsList } from './list/projects-list';
 import { CreateProjectModal } from './modals/create-project/create';
+import { ProjectsList } from './list';
 
 export const ProjectsListForm = () => {
-	const a = '';
+	const { id: accountId } = useParams<{ id: string }>();
+
+	if (!accountId) {
+		throw new Error('accountId не найден');
+	}
+
 	return (
 		<>
 			<div className={css.wrapper}>
@@ -12,9 +18,9 @@ export const ProjectsListForm = () => {
 					<p className={css.title}>Проекты</p>
 					<CreateProjectButton />
 				</div>
-				<ProjectsList />
+				<ProjectsList accountId={accountId} />
 			</div>
-			<CreateProjectModal />
+			<CreateProjectModal accountId={accountId} />
 		</>
 	);
 };

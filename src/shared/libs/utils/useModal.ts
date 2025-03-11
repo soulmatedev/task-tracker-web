@@ -7,7 +7,7 @@ export const useModal = (
 	modalInModalActive?: boolean,
 ) => {
 	const modalRef = useRef<HTMLDivElement>(null);
-	const modalContentRef = useOutSideClick(() => setActive(false), modalInModalActive);
+	const modalContentRef = useOutSideClick(() => setActive(false), modalRef);
 
 	useEffect(() => {
 		const handleEscapeKey = (e: KeyboardEvent) => {

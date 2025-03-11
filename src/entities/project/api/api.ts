@@ -1,7 +1,11 @@
 import { createApi } from '@reduxjs/toolkit/query/react';
 import { baseQuery } from '../../../shared/api/api';
 import { URI_CREATE_PROJECT, URI_PROJECT } from './consts';
-import { ICreateProjectRequest, IProject, IUpdateProjectRequest } from './types';
+import {
+	ICreateProjectRequest, IGetAssignedAccountsResponse,
+	IProject,
+	IUpdateProjectRequest,
+} from './types';
 
 export const projectAPI = createApi({
 	reducerPath: 'projectAPI',
@@ -15,6 +19,7 @@ export const projectAPI = createApi({
 				method: 'POST',
 				body: { ...data },
 			}),
+			invalidatesTags: ['project'],
 		}),
 		update: builder.mutation<void, IUpdateProjectRequest>({
 			query: ({ id, ...data }) => ({
@@ -22,16 +27,25 @@ export const projectAPI = createApi({
 				method: 'PUT',
 				body: data,
 			}),
+			invalidatesTags: ['project'],
 		}),
-		delete: builder.mutation<void, number>({
-			query: (id) => ({
-				url: `${URI_PROJECT}/${id}`,
+		delete: builder.mutation<void, { projectId: string }>({
+			query: ({ projectId }) => ({
+				url: `${URI_PROJECT}/${projectId}`,
 				method: 'DELETE',
 			}),
+			invalidatesTags: ['project'],
 		}),
 		getProjectsByAccountId: builder.query<IProject[], number>({
 			query: (accountId) => ({
 				url: `${URI_PROJECT}/${accountId}`,
+				method: 'GET',
+			}),
+			providesTags: ['project'],
+		}),
+		getAssignedAccounts: builder.query<IGetAssignedAccountsResponse[], number>({
+			query: (projectId) => ({
+				url: `${URI_PROJECT}/assigned-accounts/${projectId}`,
 				method: 'GET',
 			}),
 			providesTags: ['project'],

@@ -3,26 +3,27 @@ import css from './user-card.module.scss';
 import { useProject } from '../../../../../../../../../entities/project/model/useProject';
 
 interface UserCardProps {
-	id: number;
-	login: string;
+	id: number,
+	login: string,
+	accountId: string,
 }
 
 export const UserCard = (props: UserCardProps) => {
-	const { id, login } = props;
+	const { id, login, accountId } = props;
 	const { assignedAccounts, updateAssignedAccounts } = useProject();
 
 	useEffect(() => {
-		if (assignedAccounts.length === 0 && id === 1) {
-			updateAssignedAccounts([id]);
+		if (assignedAccounts.length === 0 && id === Number(accountId)) {
+			updateAssignedAccounts([{ id, login }]);
 		}
-	}, [assignedAccounts, id, updateAssignedAccounts]);
+	}, [assignedAccounts, id, login, updateAssignedAccounts]);
 
-	const isSelected = assignedAccounts.includes(id);
+	const isSelected = assignedAccounts.some((account) => account.id === id);
 
 	const handleSelectAccount = () => {
 		const updatedAssignedAccounts = isSelected
-			? assignedAccounts.filter((accountId) => accountId !== id)
-			: [...assignedAccounts, id];
+			? assignedAccounts.filter((account) => account.id !== id)
+			: [...assignedAccounts, { id, login }];
 
 		if (JSON.stringify(assignedAccounts) !== JSON.stringify(updatedAssignedAccounts)) {
 			updateAssignedAccounts(updatedAssignedAccounts);

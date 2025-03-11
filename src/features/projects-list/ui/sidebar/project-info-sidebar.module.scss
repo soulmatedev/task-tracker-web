@@ -1,0 +1,31 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-xl);
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: min(50vw, 400px);
+  height: 100vh;
+  z-index: 1000;
+  background-color: #FFFFFF;
+  border-left: 1px solid #DEDEDE;
+  padding: 40px;
+  transition: transform 0.3s ease;
+
+  .label {
+    font-size: 16px;
+    color: var(--content-primary-frame);
+    margin-bottom: var(--gap-ms);
+  }
+
+  .name {
+    font-size: 32px;
+    font-weight: 500;
+  }
+}
+
+.sidebar.hidden {
+  transform: translateX(100%);
+}

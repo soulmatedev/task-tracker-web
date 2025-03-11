@@ -14,7 +14,7 @@ export const ProjectNameInput = (props: ProjectNameInputProps) => {
 		<div className={css.wrapper}>
 			<Input
 				placeholder="Название"
-				width={350}
+				width={400}
 				height={60}
 				value={value}
 				type={InputTypes.TEXT}

@@ -1,6 +1,6 @@
 export const SERVER_ENVIRONMENT_DEV = 'dev';
 
-const BASE_API_URL_DEV = 'http://localhost:25504/api/';
+const BASE_API_URL_DEV = 'http://localhost:8000/api/';
 
 /* Слой доступа к данным */
 class DAL {
