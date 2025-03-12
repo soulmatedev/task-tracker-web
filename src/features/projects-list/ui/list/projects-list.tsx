@@ -9,7 +9,7 @@ import { RootState } from '../../../../app/reducers';
 import { ProjectCard } from '../card';
 
 interface ProjectsListProps {
-	accountId: string,
+	accountId: number,
 }
 
 export const ProjectsList = (props: ProjectsListProps) => {

@@ -13,6 +13,7 @@ export const ActionButtons = (props: ActionButtonsProps) => {
 
 	const onEditProject = () => {
 		dispatch(projectActions.setIsEditProjectModalActive(true));
+		dispatch(projectSlice.actions.setEditingProjectId(projectId));
 	};
 
 	const onDeleteProject = () => {

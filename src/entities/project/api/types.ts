@@ -22,7 +22,7 @@ export interface IUpdateProjectRequest {
 	id: number;
 	name?: string;
 	description?: string;
-	assignedAccounts?: number[];
+	assignedAccounts?: IAssignedAccount[];
 }
 
 export interface IGetAssignedAccountsResponse {

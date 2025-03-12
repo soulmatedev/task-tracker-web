@@ -17,6 +17,7 @@ export const DeleteProjectModal = (props: DeleteProjectModalProps) => {
 	const dispatch = useAppDispatch();
 
 	const isActive = useSelector(projectSlice.selectors.getIsDeleteProjectModalActive);
+
 	const setModalVisibility = (value: boolean) => {
 		dispatch(projectSlice.actions.setIsDeleteProjectModalActive(value));
 		dispatch(projectSlice.actions.setDeletingProjectId(null));

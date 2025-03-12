@@ -9,6 +9,7 @@ import { projectAPI } from '../../../../entities/project/api/api';
 import { AssignedAccountsList } from './ui/list';
 import { ActionButtons } from './ui/action-buttons';
 import { DeleteProjectModal } from './modals/delete';
+import { EditProjectModal } from './modals/edit';
 
 interface ProjectInfoSidebarProps {
 	project: IProject,
@@ -27,6 +28,8 @@ export const ProjectInfoSidebar = (props: ProjectInfoSidebarProps) => {
 		dispatch(projectActions.setIsSidebarActive(false));
 		dispatch(projectActions.setSelectedProject(null));
 	}, modalRef);
+
+	const accountId = assignedAccounts?.[0]?.id ?? null;
 
 	return (
 		<>
@@ -49,6 +52,7 @@ export const ProjectInfoSidebar = (props: ProjectInfoSidebarProps) => {
 				<CloseModalButton onClose={onClose} />
 			</div>
 			<DeleteProjectModal modalRef={modalRef} />
+			<EditProjectModal modalRef={modalRef} accountId={accountId} projectId={project.id} />
 		</>
 	);
 };

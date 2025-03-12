@@ -13,6 +13,7 @@ interface IProjectState {
 	}
 	selectedProject: IProject | null,
 	deletingProjectId: number | null,
+	editingProjectId: number | null,
 }
 
 const initialState: IProjectState = {
@@ -27,6 +28,7 @@ const initialState: IProjectState = {
 	},
 	selectedProject: null,
 	deletingProjectId: null,
+	editingProjectId: null,
 };
 
 export const projectSlice = createSlice({
@@ -35,9 +37,10 @@ export const projectSlice = createSlice({
 	selectors: {
 		getSelectedProject: (state) => state.selectedProject,
 		getDeletingProjectId: (state) => state.deletingProjectId,
+		getEditingProjectId: (state) => state.editingProjectId,
 
 		getIsCreateProjectModalActive: (state) => state.modals.isCreateProjectModalActive || false,
-		getIsUpdateProjectModalActive: (state) => state.modals.isEditProjectModalActive || false,
+		getIsEditProjectModalActive: (state) => state.modals.isEditProjectModalActive || false,
 		getIsDeleteProjectModalActive: (state) => state.modals.isDeleteProjectModalActive || false,
 
 		getIsSidebarActive: (state) => state.modals.isSidebarActive,
@@ -62,6 +65,9 @@ export const projectSlice = createSlice({
 		},
 		setDeletingProjectId: (state, action: PayloadAction<number | null>) => {
 			state.deletingProjectId = action.payload;
+		},
+		setEditingProjectId: (state, action: PayloadAction<number | null>) => {
+			state.editingProjectId = action.payload;
 		},
 
 		setIsCreateProjectModalActive: (state, action: PayloadAction<boolean>) => {

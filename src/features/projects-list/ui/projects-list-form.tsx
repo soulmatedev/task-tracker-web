@@ -5,7 +5,8 @@ import { CreateProjectModal } from './modals/create-project/create';
 import { ProjectsList } from './list';
 
 export const ProjectsListForm = () => {
-	const { id: accountId } = useParams<{ id: string }>();
+	const { id } = useParams<{ id: string }>();
+	const accountId = Number(id);
 
 	if (!accountId) {
 		throw new Error('accountId не найден');

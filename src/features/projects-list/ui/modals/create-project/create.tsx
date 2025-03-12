@@ -9,7 +9,7 @@ import { CreateProjectButton } from './ui/create-project-button';
 import { UsersList } from './ui/users-list';
 
 interface CreateProjectModalProps {
-	accountId: string,
+	accountId: number,
 }
 
 export const CreateProjectModal = (props: CreateProjectModalProps) => {
