@@ -48,8 +48,8 @@ export const EditProjectModal = (props: EditProjectModalProps) => {
 	};
 
 	return (
-		<Modal active={isActive} closeFunc={onCloseModal}>
-			<div ref={modalRef} className={css.wrapper}>
+		<Modal styles={css.wrapper} active={isActive} closeFunc={onCloseModal}>
+			<div ref={modalRef} className={css.content}>
 				<div>
 					<p className={css.title}>Редактирование проекта</p>
 					<ProjectNameInput value={name} onChange={updateName} />

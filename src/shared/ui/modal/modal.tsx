@@ -58,7 +58,6 @@ export const Modal = (props: IModalProps) => {
 				>
 					<div
 						className={cx(css.content_wrapper, styles)}
-						ref={modalContentRef}
 					>
 						<CloseModalButton onClose={onClose} />
 						{children}

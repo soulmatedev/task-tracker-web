@@ -41,8 +41,14 @@ export const useEditProject = () => {
 		dispatch(projectActions.setDescription(description));
 	};
 
-	const updateAssignedAccounts = (assignedAccounts: IAssignedAccount[]) => {
-		dispatch(projectActions.setAssignedAccounts(assignedAccounts));
+	const updateAssignedAccounts = (newAssignedAccounts: IAssignedAccount[]) => {
+		const updatedAssignedAccounts = [
+			...assignedAccounts.filter(
+				account => !newAssignedAccounts.some(newAccount => newAccount.id === account.id),
+			),
+			...newAssignedAccounts,
+		];
+		dispatch(projectActions.setAssignedAccounts(updatedAssignedAccounts));
 	};
 
 	return {

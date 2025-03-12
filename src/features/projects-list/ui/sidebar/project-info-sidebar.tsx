@@ -23,17 +23,19 @@ export const ProjectInfoSidebar = (props: ProjectInfoSidebarProps) => {
 
 	const dispatch = useAppDispatch();
 
+	const sidebarRef = useRef<HTMLDivElement>(null);
 	const modalRef = useRef<HTMLDivElement>(null);
-	const ref = useOutSideClick(() => {
+
+	useOutSideClick(() => {
 		dispatch(projectActions.setIsSidebarActive(false));
 		dispatch(projectActions.setSelectedProject(null));
-	}, modalRef);
+	}, sidebarRef, modalRef);
 
 	const accountId = assignedAccounts?.[0]?.id ?? null;
 
 	return (
 		<>
-			<div className={css.sidebar} ref={ref}>
+			<div className={css.sidebar}>
 				<div className={css.name_wrapper}>
 					<p className={css.label}>Название</p>
 					<p className={css.name}>{project.name}</p>

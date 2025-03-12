@@ -1,4 +1,8 @@
 .wrapper {
+  padding: 0;
+}
+
+.content {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   width: 100%;
@@ -7,6 +11,7 @@
   max-height: 490px;
   background: #FFFFFF;
   gap: var(--gap-xl);
+  border-radius: 12px;
 
   .title {
     font-size: 24px;

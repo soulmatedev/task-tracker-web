@@ -10,13 +10,12 @@ export const UsersList = (props: UsersListProps) => {
 	const { accountId } = props;
 	const { data } = authAPI.useGetAllAccountsQuery();
 
-	const filteredAccounts = data?.accounts.filter((account) => account.id !== Number(accountId));
-
 	return (
 		<div className={css.wrapper}>
-			{filteredAccounts && filteredAccounts.length > 0 ? (
+			{data?.accounts && data?.accounts.length > 0 ? (
+				// eslint-disable-next-line react/jsx-no-useless-fragment
 				<>
-					{filteredAccounts.map((account) => (
+					{data?.accounts.map((account) => (
 						<UserCard
 							key={account.id}
 							id={account.id}
