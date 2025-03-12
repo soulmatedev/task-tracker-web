@@ -49,7 +49,7 @@ export const ProjectInfoSidebar = (props: ProjectInfoSidebarProps) => {
 					<AssignedAccountsList assignedAccounts={assignedAccounts || []} />
 				</div>
 
-				<ActionButtons projectId={project.id} />
+				<ActionButtons projectId={project.id} accountId={accountId} />
 
 				<CloseModalButton onClose={onClose} />
 			</div>

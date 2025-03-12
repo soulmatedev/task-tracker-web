@@ -6,6 +6,7 @@ import styles from './Router.module.scss';
 import { AuthorizationPage } from '../../pages/auth/login';
 import { RegistrationPage } from '../../pages/auth/registration';
 import { ProjectsListPage } from '../../pages/projects-list';
+import { TaskListPage } from '../../pages/task-list';
 
 const Router = () => {
 	const location = useLocation();
@@ -27,6 +28,7 @@ const Router = () => {
 				<Route path="/" element={<AuthorizationPage />} />
 				<Route path="/registration" element={<RegistrationPage />} />
 				<Route path="/projects-list/:id" element={<ProjectsListPage />} />
+				<Route path="/task-list/:id" element={<TaskListPage />} />
 			</Routes>
 		</div>
 	);
