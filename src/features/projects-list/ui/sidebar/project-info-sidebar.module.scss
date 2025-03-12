@@ -15,14 +15,23 @@
   transition: transform 0.3s ease;
 
   .label {
-    font-size: 16px;
+    font-size: 14px;
     color: var(--content-primary-frame);
     margin-bottom: var(--gap-ms);
   }
 
   .name {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
     font-size: 32px;
     font-weight: 500;
+  }
+
+  .description {
+    word-break: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
   }
 }
 

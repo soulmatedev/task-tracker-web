@@ -9,7 +9,7 @@ export const CreateProjectButton = (props: CreateProjectButtonProps) => {
 	return (
 		<MainButton
 			text="Создать"
-			width={100}
+			width={120}
 			height={40}
 			onClick={onCreateProject}
 		/>

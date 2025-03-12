@@ -12,7 +12,8 @@ export const CreateProjectButton = () => {
 	return (
 		<MainButton
 			text="Создать проект"
-			width={140}
+			width={160}
+			height={40}
 			onClick={openCreateProjectModal}
 		/>
 	);

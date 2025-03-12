@@ -1,4 +1,3 @@
-import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import css from './projects-list.module.scss';
 import { projectAPI } from '../../../../entities/project/api/api';

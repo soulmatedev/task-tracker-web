@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../../../../../shared/libs/utils/redux';
 import { projectAPI } from '../../../../../../entities/project/api/api';
-import { projectSlice } from '../../../../../../entities/project/model/projectSlice';
+import { projectActions, projectSlice } from '../../../../../../entities/project/model/projectSlice';
 
 export const useDeleteProject = (onClose: () => void) => {
 	const dispatch = useAppDispatch();
@@ -16,6 +16,7 @@ export const useDeleteProject = (onClose: () => void) => {
 				await deleteProject({ projectId: String(deletingProjectId) })
 					.unwrap();
 				onClose();
+				dispatch(projectActions.setIsSidebarActive(false));
 				dispatch(projectAPI.util?.invalidateTags(['project']));
 				toast.success('Проект удален успешно');
 			} catch (e) {

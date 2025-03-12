@@ -1,4 +1,5 @@
 import css from './project-card.module.scss';
+import { cutText } from '../../../../shared/libs/utils/cutText';
 
 interface ProjectCardProps {
 	name: string,
@@ -15,7 +16,7 @@ export const ProjectCard = (props: ProjectCardProps) => {
 			type="button"
 		>
 			<div className={css.photo} />
-			<div className={css.name}>{name}</div>
+			<div className={css.name}>{cutText(name, 18)}</div>
 		</button>
 	);
 };

@@ -1,7 +1,7 @@
 :root {
   --default-bg-color: #FFFFFF;
   --white-bg-color: #FFFFFF;
-  --default-border: 1px solid #D8E1EF;
+  --default-border: 1px solid #d2dded;
   --default-border-radius: 12px;
   --disabled-button: #ccc;
   --light-bg-color: #FFEFF5;
@@ -16,6 +16,7 @@
 
   // Buttons
   --delete-button: #FF3134;
+  --delete-button-hovered: #eb2629;
 
   --main-button-bg-color: #1F5AF3;
   --main-button-bg-color-hovered: #1B51DA;

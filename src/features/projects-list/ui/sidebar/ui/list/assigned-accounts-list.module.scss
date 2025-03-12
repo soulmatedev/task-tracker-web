@@ -1,3 +1,18 @@
 .assigned_accounts_list {
   line-height: 1.5;
+  display: flex;
+  gap: 8px;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.account {
+  padding: 4px 12px;
+  //border: 1px solid var(--main-color);
+  background-color: #EDF1F5;
+  color: #272727;
+  font-weight: 400;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  border-radius: 32px;
 }

@@ -1,12 +1,13 @@
 .login {
   display: flex;
-  padding: 6px 16px;
+  padding: 4px 12px;
   cursor: pointer;
-  border: 1px solid var(--content-primary-frame);
-  color: var(--content-primary-frame);
+  background-color: #EDF1F5;
+  color: #272727;
   font-weight: 300;
+  font-size: 14px;
   transition: all 0.3s ease;
-  border-radius: 4px;
+  border-radius: 32px;
 }
 
 .login:hover {

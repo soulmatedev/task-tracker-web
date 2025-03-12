@@ -52,7 +52,7 @@ export const CreateProjectModal = (props: CreateProjectModalProps) => {
 				<CreateProjectButton onCreateProject={handleCreateProject} />
 			</div>
 			<div className={css.accounts}>
-				<p>Исполнители</p>
+				<p className={css.assigned}>Исполнители</p>
 				<p className={css.subtitle}>Выберите для назначения на проект</p>
 				<UsersList accountId={accountId} />
 			</div>
