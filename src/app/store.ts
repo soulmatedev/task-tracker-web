@@ -2,6 +2,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import { reducers } from './reducers';
 import { authAPI } from '../entities/user/auth/api/api';
 import { projectAPI } from '../entities/project/api/api';
+import { taskAPI } from '../entities/task/api/api';
 
 const setupStore = () => configureStore({
 	reducer: reducers,
@@ -10,6 +11,7 @@ const setupStore = () => configureStore({
 	}).concat(
 		authAPI.middleware,
 		projectAPI.middleware,
+		taskAPI.middleware,
 	),
 });
 

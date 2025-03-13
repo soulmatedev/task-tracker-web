@@ -3,6 +3,7 @@ import { MainButton } from '../../../../../../shared/ui/main-button';
 import css from './action-buttons.module.scss';
 import { useAppDispatch } from '../../../../../../shared/libs/utils/redux';
 import { projectActions, projectSlice } from '../../../../../../entities/project/model/projectSlice';
+import { IProject } from '../../../../../../entities/project/api/types';
 
 interface ActionButtonsProps {
 	projectId: number,
@@ -25,7 +26,8 @@ export const ActionButtons = (props: ActionButtonsProps) => {
 	};
 
 	const onGoToProject = () => {
-		navigate(`/task-list/${accountId}`);
+		navigate(`/task-list/${projectId}`);
+		dispatch(projectActions.setSelectedProject({ id: projectId } as IProject));
 	};
 
 	return (

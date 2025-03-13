@@ -38,6 +38,7 @@ export const projectSlice = createSlice({
 		getSelectedProject: (state) => state.selectedProject,
 		getDeletingProjectId: (state) => state.deletingProjectId,
 		getEditingProjectId: (state) => state.editingProjectId,
+		getAssignedAccounts: (state) => state.assignedAccounts,
 
 		getIsCreateProjectModalActive: (state) => state.modals.isCreateProjectModalActive || false,
 		getIsEditProjectModalActive: (state) => state.modals.isEditProjectModalActive || false,

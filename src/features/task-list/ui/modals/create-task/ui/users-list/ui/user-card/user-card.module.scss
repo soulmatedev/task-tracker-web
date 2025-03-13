@@ -1,0 +1,21 @@
+.login {
+  display: flex;
+  padding: 4px 12px;
+  cursor: pointer;
+  background-color: #EDF1F5;
+  color: #272727;
+  font-weight: 400;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  border-radius: 32px;
+}
+
+.login:hover {
+  border-color: var(--main-color);
+  color: var(--main-color);
+}
+
+.selected {
+  border-color: var(--main-color);
+  color: var(--main-color);
+}

@@ -1,0 +1,16 @@
+.wrapper {
+  display: flex;
+  margin-top: 24px;
+  gap: 8px;
+  flex-direction: row;
+  justify-content: left;
+}
+
+.not_found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 300;
+  font-size: 14px;
+  color: var(--content-primary-frame);
+}

@@ -1,0 +1,38 @@
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  padding: 48px;
+  max-width: 850px;
+  max-height: 490px;
+  background: #FFFFFF;
+  gap: var(--gap-xxl);
+
+  .title {
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: var(--header-space-xl);
+  }
+
+  .second_title {
+    font-size: 16px;
+    font-weight: 400;
+    margin-bottom: 8px;
+  }
+
+  .subtitle {
+    margin-top: var(--gap-ml);
+    font-size: 14px;
+    font-weight: 300;
+    color: var(--content-primary-frame);
+  }
+
+  .accounts {
+    display: flex;
+    flex-direction: column;
+
+    .assigned {
+      font-size: 20px;
+    }
+  }
+}
