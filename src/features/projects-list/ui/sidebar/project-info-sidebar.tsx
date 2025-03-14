@@ -31,7 +31,7 @@ export const ProjectInfoSidebar = (props: ProjectInfoSidebarProps) => {
 		dispatch(projectActions.setSelectedProject(null));
 	}, sidebarRef, modalRef);
 
-	const accountId = assignedAccounts?.[0]?.id ?? null;
+	const accountId = assignedAccounts?.[0]?.id?.toString() ?? null;
 
 	return (
 		<>

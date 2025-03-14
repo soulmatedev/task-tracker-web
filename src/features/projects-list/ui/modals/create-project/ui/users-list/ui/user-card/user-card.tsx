@@ -5,7 +5,7 @@ import { useProject } from '../../../../../../../../../entities/project/model/us
 interface UserCardProps {
 	id: number,
 	login: string,
-	accountId: number | null,
+	accountId: string | null,
 }
 
 export const UserCard = (props: UserCardProps) => {

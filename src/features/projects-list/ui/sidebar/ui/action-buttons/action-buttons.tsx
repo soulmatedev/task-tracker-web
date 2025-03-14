@@ -4,10 +4,11 @@ import css from './action-buttons.module.scss';
 import { useAppDispatch } from '../../../../../../shared/libs/utils/redux';
 import { projectActions, projectSlice } from '../../../../../../entities/project/model/projectSlice';
 import { IProject } from '../../../../../../entities/project/api/types';
+import { taskActions } from '../../../../../../entities/task/model/taskSlice';
 
 interface ActionButtonsProps {
 	projectId: number,
-	accountId: number | null;
+	accountId: string | null;
 }
 
 export const ActionButtons = (props: ActionButtonsProps) => {
@@ -28,6 +29,8 @@ export const ActionButtons = (props: ActionButtonsProps) => {
 	const onGoToProject = () => {
 		navigate(`/task-list/${projectId}`);
 		dispatch(projectActions.setSelectedProject({ id: projectId } as IProject));
+
+		dispatch(taskActions.setAccountId(accountId));
 	};
 
 	return (

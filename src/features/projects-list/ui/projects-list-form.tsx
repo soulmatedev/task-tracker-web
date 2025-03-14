@@ -6,9 +6,8 @@ import { ProjectsList } from './list';
 
 export const ProjectsListForm = () => {
 	const { id } = useParams<{ id: string }>();
-	const accountId = Number(id);
 
-	if (!accountId) {
+	if (!id) {
 		throw new Error('accountId не найден');
 	}
 
@@ -19,9 +18,9 @@ export const ProjectsListForm = () => {
 					<p className={css.title}>Проекты</p>
 					<CreateProjectButton />
 				</div>
-				<ProjectsList accountId={accountId} />
+				<ProjectsList accountId={id} />
 			</div>
-			<CreateProjectModal accountId={accountId} />
+			<CreateProjectModal accountId={id} />
 		</>
 	);
 };

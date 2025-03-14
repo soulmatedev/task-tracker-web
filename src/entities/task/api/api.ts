@@ -49,12 +49,11 @@ export const taskAPI = createApi({
 		}),
 		getTasksByAssignedTo: builder.query<IGetTasksByAssignedToResponse[], string>({
 			query: (accountId) => ({
-				url: `${URI_CREATE_TASK}/assigned/${accountId}`,
+				url: `${URI_TASK}/assigned/${accountId}`,
 				method: 'GET',
 			}),
 			providesTags: ['task'],
 		}),
-
 		getStatuses: builder.query<IStatus[], void>({
 			query: () => ({
 				url: `${URI_TASK}/statuses`,

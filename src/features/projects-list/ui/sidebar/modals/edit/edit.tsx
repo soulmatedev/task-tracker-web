@@ -13,7 +13,7 @@ import { SaveProjectButton } from './ui/save-project-button';
 interface EditProjectModalProps {
 	modalRef: React.RefObject<HTMLDivElement>,
 	projectId: number;
-	accountId: number | null;
+	accountId: string | null;
 }
 
 export const EditProjectModal = (props: EditProjectModalProps) => {
@@ -24,10 +24,8 @@ export const EditProjectModal = (props: EditProjectModalProps) => {
 	const {
 		name,
 		description,
-		assignedAccounts,
 		updateName,
 		updateDescription,
-		updateAssignedAccounts,
 		onUpdateProject,
 	} = useEditProject();
 

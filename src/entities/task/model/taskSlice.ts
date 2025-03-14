@@ -16,6 +16,7 @@ interface ITaskState {
 	selectedTask: ITask | null;
 	deletingTaskId: number | null;
 	editingTaskId: number | null;
+	accountId: string | null;
 }
 
 const initialState: ITaskState = {
@@ -33,6 +34,7 @@ const initialState: ITaskState = {
 	selectedTask: null,
 	deletingTaskId: null,
 	editingTaskId: null,
+	accountId: null,
 };
 
 export const taskSlice = createSlice({
@@ -42,6 +44,7 @@ export const taskSlice = createSlice({
 		getSelectedTask: (state) => state.selectedTask,
 		getDeletingTaskId: (state) => state.deletingTaskId,
 		getEditingTaskId: (state) => state.editingTaskId,
+		getAccountId: (state) => state.accountId,
 
 		getIsCreateTaskModalActive: (state) => state.modals.isCreateTaskModalActive || false,
 		getIsEditTaskModalActive: (state) => state.modals.isEditTaskModalActive || false,
@@ -81,6 +84,9 @@ export const taskSlice = createSlice({
 		},
 		setEditingTaskId: (state, action: PayloadAction<number | null>) => {
 			state.editingTaskId = action.payload;
+		},
+		setAccountId: (state, action: PayloadAction<string | null>) => {
+			state.accountId = action.payload;
 		},
 
 		setIsCreateTaskModalActive: (state, action: PayloadAction<boolean>) => {

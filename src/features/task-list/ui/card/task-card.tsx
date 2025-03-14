@@ -1,7 +1,15 @@
 import css from './task-card.module.scss';
 import { useResponsiveMinWidth } from '../../../../shared/libs/utils/useResponsiveMinWidth';
+import { IGetTasksByAssignedToResponse } from '../../../../entities/task/api/types';
 
-export const TaskCard = () => {
+interface TaskCardProps {
+	task: IGetTasksByAssignedToResponse,
+}
+
+export const TaskCard = (props: TaskCardProps) => {
+	const { task } = props;
+	const { title, description, assignedTo } = task;
+
 	const minWidthForTitle = useResponsiveMinWidth({
 		2560: 530,
 		2460: 500,
@@ -16,11 +24,11 @@ export const TaskCard = () => {
 		<div className={css.wrapper}>
 			<div className={css.header}>
 				<p className={css.title} style={{ maxWidth: `${minWidthForTitle}px` }}>
-					Заголовок задачи
+					{title}
 				</p>
-				<p className={css.assigned}>Назначенный</p>
+				<p className={css.assigned}>{assignedTo?.login}</p>
 			</div>
-			<p className={css.description}>Какое-то описание, ты не прочитаешь</p>
+			<p className={css.description}>{description}</p>
 		</div>
 	);
 };

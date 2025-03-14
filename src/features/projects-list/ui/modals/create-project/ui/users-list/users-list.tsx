@@ -3,7 +3,7 @@ import css from './users-list.module.scss';
 import { UserCard } from './ui/user-card';
 
 interface UsersListProps {
-	accountId: number | null,
+	accountId: string | null,
 }
 
 export const UsersList = (props: UsersListProps) => {
