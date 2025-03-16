@@ -11,6 +11,7 @@ import {
 import { taskActions, taskSlice } from '../../../../../../entities/task/model/taskSlice';
 import { useEditTask } from '../../../../../../entities/task/model/useEditTask';
 import { UsersList } from '../../../modals/create-task/ui/users-list';
+import { TaskDeadlineInput } from '../../../modals/create-task/ui/task-deadline-input';
 
 interface EditTaskModalProps {
 	modalRef: React.RefObject<HTMLDivElement>,
@@ -26,7 +27,9 @@ export const EditTaskModal = (props: EditTaskModalProps) => {
 	const {
 		title,
 		description,
+		dueDate,
 		updateName,
+		updateDueDate,
 		updateDescription,
 		onUpdateProject,
 	} = useEditTask();
@@ -60,6 +63,10 @@ export const EditTaskModal = (props: EditTaskModalProps) => {
 					<p className={css.assigned}>Исполнители</p>
 					<p className={css.subtitle}>Выберите для назначения на задачу</p>
 					<UsersList projectId={projectId} />
+
+					<div className={css.deadline}>
+						<TaskDeadlineInput value={dueDate} onChange={updateDueDate} />
+					</div>
 				</div>
 			</div>
 		</Modal>

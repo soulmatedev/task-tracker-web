@@ -31,4 +31,12 @@
     grid-template-columns: repeat(2, 1fr);
     gap: var(--gap-ms);
   }
+
+  @media (max-width: 600px) {
+    .down_buttons {
+      display: flex;
+      flex-direction: column;
+      gap: var(--gap-ms);
+    }
+  }
 }

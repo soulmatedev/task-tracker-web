@@ -30,7 +30,7 @@ export interface IUpdateTaskRequest {
 	title?: string;
 	description?: string;
 	assignedTo?: IAssignedAccount | null;
-	dueDate?: string;
+	dueDate?: string | null;
 	status: IStatus | null;
 }
 

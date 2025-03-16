@@ -1,7 +1,6 @@
 .wrapper {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  width: 100%;
   padding: 48px;
   max-width: 900px;
   max-height: 490px;
@@ -21,6 +20,10 @@
     color: var(--content-primary-frame);
   }
 
+  .deadline {
+    margin-top: auto;
+  }
+
   .accounts {
     display: flex;
     flex-direction: column;
@@ -28,5 +31,12 @@
     .assigned {
       font-size: 20px;
     }
+  }
+
+  @media (max-width: 900px) {
+    grid-template-columns: 1fr;
+    padding: 24px;
+    max-width: 100%;
+    max-height: none;
   }
 }

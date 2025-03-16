@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from '../../../shared/libs/utils/redux';
 import { taskAPI } from '../api/api';
 import {
-	selectAssignedTo, selectDescription, selectStatus, selectTitle,
+	selectAssignedTo, selectDescription, selectDueDate, selectStatus, selectTitle,
 } from './taskSelectors';
 import { IStatus, ITask, IUpdateTaskRequest } from '../api/types';
 import { taskActions } from './taskSlice';
@@ -17,6 +17,7 @@ export const useEditTask = () => {
 	const description = useSelector(selectDescription);
 	const assignedTo = useSelector(selectAssignedTo);
 	const status = useSelector(selectStatus);
+	const dueDate = useSelector(selectDueDate);
 
 	const onUpdateProject = async (id: number) => {
 		try {
@@ -26,6 +27,7 @@ export const useEditTask = () => {
 				description,
 				assignedTo: assignedTo ? { id: assignedTo.id, login: assignedTo.login } : null,
 				status,
+				dueDate,
 			};
 			await update(taskData).unwrap();
 			dispatch(taskAPI.util?.invalidateTags(['task']));
@@ -61,6 +63,7 @@ export const useEditTask = () => {
 	return {
 		title,
 		description,
+		dueDate,
 		assignedTo,
 		updateName,
 		updateDescription,

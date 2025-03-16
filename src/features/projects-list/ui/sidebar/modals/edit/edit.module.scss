@@ -34,4 +34,28 @@
       font-size: 20px;
     }
   }
+
+  @media (max-width: 850px) {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    max-width: 100%;
+    max-height: none;
+    gap: var(--gap-ms);
+
+    .title {
+      font-size: 20px;
+    }
+
+    .subtitle {
+      font-size: 12px;
+    }
+
+    .accounts {
+      margin-top: 16px;
+      .assigned {
+        font-size: 16px;
+      }
+    }
+  }
 }

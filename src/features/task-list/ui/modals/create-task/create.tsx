@@ -59,7 +59,9 @@ export const CreateTaskModal = (props: CreateTaskModalProps) => {
 				<p className={css.subtitle}>Выберите для назначения на задачу</p>
 				<UsersList projectId={projectId} />
 
-				<TaskDeadlineInput value={dueDate} onChange={updateDueDate} />
+				<div className={css.deadline}>
+					<TaskDeadlineInput value={dueDate} onChange={updateDueDate} />
+				</div>
 			</div>
 		</Modal>
 	);
