@@ -33,6 +33,14 @@ export const taskAPI = createApi({
 			}),
 			invalidatesTags: ['task'],
 		}),
+		updateStatus: builder.mutation<void, { taskId: string, statusId: number }>({
+			query: ({ taskId, statusId }) => ({
+				url: `${URI_TASK}/${taskId}/status`,
+				method: 'PATCH',
+				body: { status: statusId },
+			}),
+			invalidatesTags: ['task'],
+		}),
 		delete: builder.mutation<void, { taskId: string }>({
 			query: ({ taskId }) => ({
 				url: `${URI_TASK}/${taskId}`,

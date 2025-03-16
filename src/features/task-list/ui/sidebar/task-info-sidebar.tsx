@@ -9,6 +9,8 @@ import { EditTaskModal } from './modals/edit';
 import { ITask } from '../../../../entities/task/api/types';
 import { taskActions } from '../../../../entities/task/model/taskSlice';
 import { taskAPI } from '../../../../entities/task/api/api';
+import { useFormattedDate } from '../../../../shared/libs/utils/useFormattedDate';
+import { StatusDropdownContainer } from '../modals/create-task/ui/status-task-container';
 
 interface TaskInfoSidebarProps {
 	task: ITask,
@@ -32,6 +34,8 @@ export const TaskInfoSidebar = (props: TaskInfoSidebarProps) => {
 
 	const accountId = assignedAccounts?.[0]?.id ? Number(assignedAccounts[0].id) : 0;
 
+	const formattedDate = useFormattedDate(task.dueDate);
+
 	return (
 		<>
 			<div className={css.sidebar}>
@@ -47,9 +51,15 @@ export const TaskInfoSidebar = (props: TaskInfoSidebarProps) => {
 					<p className={css.label}>Назначены</p>
 					<div>{task.assignedTo?.login}</div>
 				</div>
-
+				<div className={css.deadline}>
+					<p className={css.label}>Дедлайн</p>
+					<div>{formattedDate ? `До ${formattedDate}` : 'Не установлен'}</div>
+				</div>
+				<div className={css.status}>
+					<p className={css.label}>Статус</p>
+					<StatusDropdownContainer />
+				</div>
 				<ActionButtons taskId={task.id} />
-
 				<CloseModalButton onClose={onClose} />
 			</div>
 			<DeleteTaskModal modalRef={modalRef} />
