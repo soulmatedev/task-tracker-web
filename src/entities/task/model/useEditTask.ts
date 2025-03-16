@@ -5,7 +5,7 @@ import { taskAPI } from '../api/api';
 import {
 	selectAssignedTo, selectDescription, selectStatus, selectTitle,
 } from './taskSelectors';
-import { IStatus, IUpdateTaskRequest } from '../api/types';
+import { IStatus, ITask, IUpdateTaskRequest } from '../api/types';
 import { taskActions } from './taskSlice';
 import { IAssignedAccount } from '../../project/api/types';
 
@@ -20,15 +20,16 @@ export const useEditTask = () => {
 
 	const onUpdateProject = async (id: number) => {
 		try {
-			const projectData: IUpdateTaskRequest = {
+			const taskData: IUpdateTaskRequest = {
 				id,
 				title,
 				description,
 				assignedTo: assignedTo ? { id: assignedTo.id, login: assignedTo.login } : null,
 				status,
 			};
-			await update(projectData).unwrap();
+			await update(taskData).unwrap();
 			dispatch(taskAPI.util?.invalidateTags(['task']));
+			dispatch(taskActions.setSelectedTask(taskData as ITask));
 			dispatch(taskActions.clearData());
 			toast.success('Проект успешно обновлён');
 		} catch (error) {

@@ -2,7 +2,7 @@ import { toast } from 'react-toastify';
 import { useSelector } from 'react-redux';
 import { projectActions } from './projectSlice';
 import { projectAPI } from '../api/api';
-import { IAssignedAccount, IUpdateProjectRequest } from '../api/types';
+import { IAssignedAccount, IProject, IUpdateProjectRequest } from '../api/types';
 import { selectAssignedAccounts, selectDescription, selectName } from './projectSelectors';
 import { useAppDispatch } from '../../../shared/libs/utils/redux';
 
@@ -23,8 +23,10 @@ export const useEditProject = () => {
 				description,
 				assignedAccounts,
 			};
+
 			await update(projectData).unwrap();
 			dispatch(projectAPI.util?.invalidateTags(['project']));
+			dispatch(projectActions.setSelectedProject(projectData as IProject));
 			dispatch(projectActions.clearData());
 			toast.success('Проект успешно обновлён');
 		} catch (error) {

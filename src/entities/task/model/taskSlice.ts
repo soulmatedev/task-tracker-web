@@ -79,6 +79,8 @@ export const taskSlice = createSlice({
 
 		setSelectedTask(state, action: PayloadAction<ITask | null>) {
 			state.selectedTask = action.payload;
+			state.title = action.payload?.title ?? '';
+			state.description = action.payload?.description ?? '';
 		},
 		setDeletingTaskId: (state, action: PayloadAction<number | null>) => {
 			state.deletingTaskId = action.payload;

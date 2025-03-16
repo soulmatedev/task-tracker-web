@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 import css from './projects-list.module.scss';
 import { projectAPI } from '../../../../entities/project/api/api';
 import { IProject } from '../../../../entities/project/api/types';
@@ -18,6 +19,15 @@ export const ProjectsList = (props: ProjectsListProps) => {
 	const selectedProject = useSelector((state: RootState) => state.project.selectedProject);
 	const isSidebarActive = useSelector((state: RootState) => state.project.modals.isSidebarActive);
 	const { data: projects } = projectAPI.useGetProjectsByAccountIdQuery(Number(accountId), { skip: !accountId });
+
+	useEffect(() => {
+		if (selectedProject?.id && projects) {
+			const foundProject = projects.find(p => p.id === selectedProject.id);
+			if (foundProject) {
+				dispatch(projectActions.setSelectedProject(foundProject));
+			}
+		}
+	}, [projects, selectedProject, dispatch]);
 
 	const onProjectClick = (project: IProject) => {
 		if (selectedProject?.id === project.id) {

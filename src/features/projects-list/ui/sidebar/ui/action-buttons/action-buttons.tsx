@@ -5,6 +5,7 @@ import { useAppDispatch } from '../../../../../../shared/libs/utils/redux';
 import { projectActions, projectSlice } from '../../../../../../entities/project/model/projectSlice';
 import { IProject } from '../../../../../../entities/project/api/types';
 import { taskActions } from '../../../../../../entities/task/model/taskSlice';
+import { projectAPI } from '../../../../../../entities/project/api/api';
 
 interface ActionButtonsProps {
 	projectId: number,
@@ -30,6 +31,7 @@ export const ActionButtons = (props: ActionButtonsProps) => {
 		navigate(`/task-list/${projectId}`);
 		dispatch(projectActions.setSelectedProject({ id: projectId } as IProject));
 		dispatch(taskActions.setAccountId(accountId));
+		dispatch(projectAPI.util.invalidateTags(['project']));
 	};
 
 	return (

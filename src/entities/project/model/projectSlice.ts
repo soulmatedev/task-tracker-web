@@ -63,6 +63,9 @@ export const projectSlice = createSlice({
 
 		setSelectedProject(state, action: PayloadAction<IProject | null>) {
 			state.selectedProject = action.payload;
+			state.name = action.payload?.name ?? '';
+			state.description = action.payload?.description ?? '';
+			state.assignedAccounts = action.payload?.assignedAccounts ?? [];
 		},
 		setDeletingProjectId: (state, action: PayloadAction<number | null>) => {
 			state.deletingProjectId = action.payload;
