@@ -29,7 +29,6 @@ export const ActionButtons = (props: ActionButtonsProps) => {
 	const onGoToProject = () => {
 		navigate(`/task-list/${projectId}`);
 		dispatch(projectActions.setSelectedProject({ id: projectId } as IProject));
-
 		dispatch(taskActions.setAccountId(accountId));
 	};
 

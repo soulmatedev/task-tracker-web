@@ -4,11 +4,17 @@ import { IGetTasksByAssignedToResponse } from '../../../../entities/task/api/typ
 
 interface TaskCardProps {
 	task: IGetTasksByAssignedToResponse,
+	onClick: () => void,
+	isSelected: boolean,
 }
 
 export const TaskCard = (props: TaskCardProps) => {
-	const { task } = props;
-	const { title, description, assignedTo } = task;
+	const { task, onClick, isSelected } = props;
+	const {
+		title,
+		description,
+		assignedTo,
+	} = task;
 
 	const minWidthForTitle = useResponsiveMinWidth({
 		2560: 530,
@@ -21,7 +27,11 @@ export const TaskCard = (props: TaskCardProps) => {
 	});
 
 	return (
-		<div className={css.wrapper}>
+		<button
+			className={`${css.wrapper} ${isSelected ? css.selected : ''}`}
+			onClick={onClick}
+			type="button"
+		>
 			<div className={css.header}>
 				<p className={css.title} style={{ maxWidth: `${minWidthForTitle}px` }}>
 					{title}
@@ -29,6 +39,6 @@ export const TaskCard = (props: TaskCardProps) => {
 				<p className={css.assigned}>{assignedTo?.login}</p>
 			</div>
 			<p className={css.description}>{description}</p>
-		</div>
+		</button>
 	);
 };

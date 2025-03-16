@@ -1,63 +1,71 @@
-// import { toast } from 'react-toastify';
-// import { useSelector } from 'react-redux';
-// import { projectActions } from './taskSlice';
-// import { projectAPI } from '../api/api';
-// import { IAssignedAccount, IUpdateProjectRequest } from '../api/types';
-// import { selectAssignedAccounts, selectDescription, selectName } from './projectSelectors';
-// import { useAppDispatch } from '../../../shared/libs/utils/redux';
+import { toast } from 'react-toastify';
+import { useSelector } from 'react-redux';
+import { useAppDispatch } from '../../../shared/libs/utils/redux';
+import { taskAPI } from '../api/api';
+import {
+	selectAssignedTo, selectDescription, selectStatus, selectTitle,
+} from './taskSelectors';
+import { IStatus, IUpdateTaskRequest } from '../api/types';
+import { taskActions } from './taskSlice';
+import { IAssignedAccount } from '../../project/api/types';
 
 export const useEditTask = () => {
-	// const dispatch = useAppDispatch();
-	//
-	// const [update] = projectAPI.useUpdateMutation();
-	//
-	// const name = useSelector(selectName);
-	// const description = useSelector(selectDescription);
-	// const assignedAccounts = useSelector(selectAssignedAccounts);
-	//
-	// const onUpdateProject = async (id: number) => {
-	// 	try {
-	// 		const projectData: IUpdateProjectRequest = {
-	// 			id,
-	// 			name,
-	// 			description,
-	// 			assignedAccounts,
-	// 		};
-	// 		await update(projectData).unwrap();
-	// 		dispatch(projectAPI.util?.invalidateTags(['project']));
-	// 		dispatch(projectActions.clearData());
-	// 		toast.success('Проект успешно обновлён');
-	// 	} catch (error) {
-	// 		console.error('Ошибка при обновлении проекта:', error);
-	// 		toast.error('Не удалось обновить проект');
-	// 	}
-	// };
-	//
-	// const updateName = (name: string) => {
-	// 	dispatch(projectActions.setName(name));
-	// };
-	//
-	// const updateDescription = (description: string) => {
-	// 	dispatch(projectActions.setDescription(description));
-	// };
-	//
-	// const updateAssignedAccounts = (newAssignedAccounts: IAssignedAccount[]) => {
-	// 	const updatedAssignedAccounts = [
-	// 		...assignedAccounts.filter(
-	// 			account => !newAssignedAccounts.some(newAccount => newAccount.id === account.id),
-	// 		),
-	// 		...newAssignedAccounts,
-	// 	];
-	// 	dispatch(projectActions.setAssignedAccounts(updatedAssignedAccounts));
-	// };
-	//
-	// return {
-	// 	name,
-	// 	description,
-	// 	assignedAccounts,
-	// 	updateName,
-	// 	updateDescription,
-	// 	updateAssignedAccounts,
-	// 	onUpdateProject,
-	// };
+	const dispatch = useAppDispatch();
+	const [update] = taskAPI.useUpdateMutation();
+
+	const title = useSelector(selectTitle);
+	const description = useSelector(selectDescription);
+	const assignedTo = useSelector(selectAssignedTo);
+	const status = useSelector(selectStatus);
+
+	const onUpdateProject = async (id: number) => {
+		try {
+			const projectData: IUpdateTaskRequest = {
+				id,
+				title,
+				description,
+				assignedTo: assignedTo ? { id: assignedTo.id, login: assignedTo.login } : null,
+				status,
+			};
+			await update(projectData).unwrap();
+			dispatch(taskAPI.util?.invalidateTags(['task']));
+			dispatch(taskActions.clearData());
+			toast.success('Проект успешно обновлён');
+		} catch (error) {
+			console.error('Ошибка при обновлении проекта:', error);
+			toast.error('Не удалось обновить проект');
+		}
+	};
+
+	const updateName = (name: string) => {
+		dispatch(taskActions.setTitle(name));
+	};
+
+	const updateDescription = (description: string) => {
+		dispatch(taskActions.setDescription(description));
+	};
+
+	const updateAssignedAccounts = (newAssignedAccount: IAssignedAccount | undefined) => {
+		dispatch(taskActions.setAssignedTo(newAssignedAccount));
+	};
+
+	const updateDueDate = (dueDate: string | null) => {
+		dispatch(taskActions.setDueDate(dueDate));
+	};
+
+	const updateStatus = (status: IStatus | null) => {
+		dispatch(taskActions.setStatus(status));
+	};
+
+	return {
+		title,
+		description,
+		assignedTo,
+		updateName,
+		updateDescription,
+		updateAssignedAccounts,
+		updateDueDate,
+		updateStatus,
+		onUpdateProject,
+	};
 };

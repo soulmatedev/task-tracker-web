@@ -1,10 +1,11 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { IStatus, ITask } from '../api/types';
+import { IAssignedAccount } from '../../project/api/types';
 
 interface ITaskState {
 	title: string;
 	description: string;
-	assignedTo: number | null;
+	assignedTo: IAssignedAccount | undefined;
 	dueDate: string | null;
 	status: IStatus | null;
 	modals: {
@@ -22,7 +23,7 @@ interface ITaskState {
 const initialState: ITaskState = {
 	title: '',
 	description: '',
-	assignedTo: null,
+	assignedTo: undefined,
 	dueDate: null,
 	status: null,
 	modals: {
@@ -34,7 +35,7 @@ const initialState: ITaskState = {
 	selectedTask: null,
 	deletingTaskId: null,
 	editingTaskId: null,
-	accountId: null,
+	accountId: localStorage.getItem('accountId'),
 };
 
 export const taskSlice = createSlice({
@@ -59,7 +60,7 @@ export const taskSlice = createSlice({
 		setDescription(state, action: PayloadAction<string>) {
 			state.description = action.payload;
 		},
-		setAssignedTo(state, action: PayloadAction<number | null>) {
+		setAssignedTo(state, action: PayloadAction<IAssignedAccount | undefined>) {
 			state.assignedTo = action.payload;
 		},
 		setDueDate(state, action: PayloadAction<string | null>) {
@@ -71,7 +72,7 @@ export const taskSlice = createSlice({
 		clearData(state) {
 			state.title = '';
 			state.description = '';
-			state.assignedTo = null;
+			state.assignedTo = undefined;
 			state.dueDate = null;
 			state.status = null;
 		},
@@ -87,6 +88,12 @@ export const taskSlice = createSlice({
 		},
 		setAccountId: (state, action: PayloadAction<string | null>) => {
 			state.accountId = action.payload;
+
+			if (action.payload !== null) {
+				localStorage.setItem('accountId', action.payload);
+			} else {
+				localStorage.removeItem('accountId');
+			}
 		},
 
 		setIsCreateTaskModalActive: (state, action: PayloadAction<boolean>) => {

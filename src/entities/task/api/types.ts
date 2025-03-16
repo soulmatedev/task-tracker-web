@@ -9,8 +9,8 @@ export interface ITask {
 	id: number;
 	title: string;
 	description?: string;
-	projectId: number;
-	createdBy: number;
+	projectId?: number;
+	createdBy?: number;
 	assignedTo?: IAssignedAccount;
 	dueDate?: string;
 	status: IStatus | null;
@@ -19,8 +19,8 @@ export interface ITask {
 export interface ICreateTaskRequest {
 	title: string;
 	description?: string;
-	projectId: number;
-	assignedTo?: number | null;
+	projectId?: number;
+	assignedTo?: IAssignedAccount | null;
 	dueDate?: string | null;
 	status: IStatus | null;
 }
@@ -29,7 +29,7 @@ export interface IUpdateTaskRequest {
 	id: number;
 	title?: string;
 	description?: string;
-	assignedTo?: IAssignedAccount;
+	assignedTo?: IAssignedAccount | null;
 	dueDate?: string;
 	status: IStatus | null;
 }

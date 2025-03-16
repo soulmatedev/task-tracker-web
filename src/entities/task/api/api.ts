@@ -27,7 +27,7 @@ export const taskAPI = createApi({
 		}),
 		update: builder.mutation<void, IUpdateTaskRequest>({
 			query: ({ id, ...data }) => ({
-				url: `${URI_CREATE_TASK}/${id}`,
+				url: `${URI_TASK}/${id}`,
 				method: 'PUT',
 				body: data,
 			}),
@@ -35,7 +35,7 @@ export const taskAPI = createApi({
 		}),
 		delete: builder.mutation<void, { taskId: string }>({
 			query: ({ taskId }) => ({
-				url: `${URI_CREATE_TASK}/${taskId}`,
+				url: `${URI_TASK}/${taskId}`,
 				method: 'DELETE',
 			}),
 			invalidatesTags: ['task'],
@@ -50,6 +50,13 @@ export const taskAPI = createApi({
 		getTasksByAssignedTo: builder.query<IGetTasksByAssignedToResponse[], string>({
 			query: (accountId) => ({
 				url: `${URI_TASK}/assigned/${accountId}`,
+				method: 'GET',
+			}),
+			providesTags: ['task'],
+		}),
+		getTasksWithoutCurrentUser: builder.query<IGetTasksByAssignedToResponse[], void>({
+			query: () => ({
+				url: `${URI_TASK}/without-current-user`,
 				method: 'GET',
 			}),
 			providesTags: ['task'],

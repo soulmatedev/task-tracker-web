@@ -15,17 +15,17 @@ export const UserCard = (props: UserCardProps) => {
 
 	useEffect(() => {
 		if (!assignedTo && id === Number(projectId)) {
-			updateAssignedTo(id);
+			updateAssignedTo({ id, login });
 		}
 	}, [assignedTo, id, projectId, updateAssignedTo]);
 
-	const isSelected = assignedTo === id;
+	const isSelected = assignedTo?.id === id;
 
 	const handleSelectAccount = () => {
 		if (isSelected) {
-			updateAssignedTo(null);
+			updateAssignedTo(undefined);
 		} else {
-			updateAssignedTo(id);
+			updateAssignedTo({ id, login });
 		}
 	};
 

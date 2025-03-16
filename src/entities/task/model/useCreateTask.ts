@@ -30,7 +30,7 @@ export const useCreateTask = (props: IUseCreateTaskProps) => {
 		projectId,
 		title,
 		description,
-		assignedTo,
+		assignedTo: assignedTo ? { id: assignedTo.id, login: assignedTo.login } : null,
 		dueDate,
 		status,
 	};
@@ -39,6 +39,7 @@ export const useCreateTask = (props: IUseCreateTaskProps) => {
 		try {
 			const response = await create(taskData).unwrap();
 			dispatch(taskActions.clearData());
+			console.log(taskData);
 			dispatch(taskAPI.util?.invalidateTags(['task']));
 			toast.success('Задача создана успешно');
 			return response;
@@ -56,7 +57,7 @@ export const useCreateTask = (props: IUseCreateTaskProps) => {
 		dispatch(taskActions.setDescription(description));
 	};
 
-	const updateAssignedTo = (assignedTo: number | null) => {
+	const updateAssignedTo = (assignedTo: IAssignedAccount | undefined) => {
 		dispatch(taskActions.setAssignedTo(assignedTo));
 	};
 
