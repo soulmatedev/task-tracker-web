@@ -2,7 +2,7 @@ import { fetchBaseQuery } from '@reduxjs/toolkit/query';
 import { v4 as uuid } from 'uuid';
 import { SERVER_ENVIRONMENT_DEV } from '../../api/API';
 
-const BASE_API_URL_DEV = 'http://localhost:8081/api/';
+const BASE_API_URL_DEV = 'http://localhost:25504/api/';
 
 export const providesList = <R extends { id: string | number }[], T extends string>(
 	resultsWithIds: R | undefined,
